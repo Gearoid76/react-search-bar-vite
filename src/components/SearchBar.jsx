@@ -18,7 +18,7 @@ export const SearchBar = ({ setResults }) => {
         );
         
       });
-      setResults(results);
+      setResults(results); // stopped at 25:25  https://www.youtube.com/watch?v=sWVgMcz8Q44
     });
   };
   
