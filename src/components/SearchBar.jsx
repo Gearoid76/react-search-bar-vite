@@ -1,3 +1,4 @@
+//components/SearchBar.jsx
 import React, { useState } from 'react'
 import { FaSearch } from 'react-icons/fa';
 import App from '../App';
@@ -18,7 +19,7 @@ export const SearchBar = ({ setResults }) => {
         );
         
       });
-      setResults(results); // stopped at 25:25  https://www.youtube.com/watch?v=sWVgMcz8Q44
+      setResults(results); 
     });
   };
   
