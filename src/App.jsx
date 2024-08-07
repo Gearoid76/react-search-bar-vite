@@ -10,7 +10,10 @@ const [results, setResults] = useState([]);
       <div className="App">
         <div className='search-bar-container'>
           <SearchBar setResults={setResults} />
-          <SearchResultsList results={results} />
+          <div className='search-results-playlist-list'>
+              <SearchResultsList results={results} />
+          </div>
+         
         </div>
       </div>
   )
