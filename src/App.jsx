@@ -10,12 +10,10 @@ function App() {
       <div className="App">
         <div className='search-bar-container'>
           <SearchBar setResults={setResults} />
-          <div className='search-results-playlist-list'>
               <SearchResultsList results={results} />
           </div>
          
         </div>
-      </div>
   );
 }
 
