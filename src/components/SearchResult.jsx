@@ -1,4 +1,4 @@
-//components/SearchResult.jsx
+//src/components/SearchResult.jsx
 import React from 'react'
 import { FaPlus } from "react-icons/fa";
 import App from '../App';

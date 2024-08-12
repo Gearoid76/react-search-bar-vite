@@ -1,5 +1,4 @@
-
-//components/SearchResultsList.jsx
+//src/components/SearchResultsList.jsx
 import React from 'react'
 import App from '../App';
 import { SearchResult } from './SearchResult';
