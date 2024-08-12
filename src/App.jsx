@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { SearchBar } from './components/SearchBar';
 import { SearchResultsList } from './components/SearchResultsList';
-import { getAccessToken } from './auth'; // Import the auth function
+import { redirectToAuthCodeFlow, getAccessToken } from './auth';
+import './App.css';
 
-const clientId = import.meta.env.VITE_CLIENT_ID; // Make sure you have this in your environment variables
+const clientId = import.meta.env.VITE_CLIENT_ID; 
 
 function App() {
   const [accessToken, setAccessToken] = useState(null);
