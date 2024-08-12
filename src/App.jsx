@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { redirectToAuthCodeFlow, getAccessToken } from './auth';
 import { SearchBar } from './components/SearchBar';
 import { SearchResultsList } from './components/SearchResultsList';
-import  Playlist  from './components/Playlist';
+import Playlist from './components/Playlist';
 import './App.css';
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
       },
       body: JSON.stringify({
         name: playlistName,
-        description: 'Created my Muusic(k)',
+        description: 'Created by Muusic(k)',
         public: false,
       }),
     })
@@ -101,14 +101,14 @@ function App() {
         <SearchBar setResults={setResults} accessToken={accessToken} />
         <SearchResultsList results={results} onAddToPlaylist={handleAddToPlaylist} />
       </div>
-      {playlist && (
-       <Playlist 
+      {playlistTracks.length > 0 && playlist && (
+        <Playlist
           playlist={playlist}
           playlistTracks={playlistTracks}
           handleRemoveTrack={handleRemoveTrack}
-          />
+        />
       )}
-      </div>
+    </div>
   );
 }
 
