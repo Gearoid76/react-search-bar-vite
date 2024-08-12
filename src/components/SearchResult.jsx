@@ -61,3 +61,4 @@ export const SearchResult = ({ result, onAddToPlaylist, onRemoveFromPlaylist }) 
     </div>
   );
 };
+
