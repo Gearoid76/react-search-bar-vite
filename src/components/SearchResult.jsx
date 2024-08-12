@@ -29,7 +29,13 @@ export const SearchResult = ({ result, onAddToPlaylist, onRemoveFromPlaylist }) 
         <p>{result.artist} - {result.album}</p>
         <a href={result.externalUrl} target="_blank" rel="noopener noreferrer">Listen on Spotify</a>
       </div>
-      <div className="add-icon" onClick={() => setIsAdding(true)}>
+      <div 
+      className="add-icon" 
+      onClick={() => {
+        setIsAdding(true);
+        handleAddToPlaylist();
+      }}
+      >
         <FaPlus />
       </div>
 
@@ -41,7 +47,6 @@ export const SearchResult = ({ result, onAddToPlaylist, onRemoveFromPlaylist }) 
             onChange={(e) => setPlaylistName(e.target.value)}
             placeholder="Enter playlist name"
           />
-          <button onClick={handleAddToPlaylist}>Add to Playlist</button>
           <div className="playlist-tracks">
             {playlistTracks.length > 0 && playlistTracks.map((track) => (
               <div key={track.id} className="playlist-track">

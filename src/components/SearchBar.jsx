@@ -56,7 +56,7 @@ export const SearchBar = ({ setResults, accessToken }) => {
         placeholder='Type to search..'
         value={input}
         onChange={(e) => handleChange(e.target.value)}
-        disabled={!accessToken} // Disable input if no access token is available
+        disabled={!accessToken}
       />
       <FaSearch id="search-icon" />
     </div>

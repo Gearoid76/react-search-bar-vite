@@ -91,10 +91,11 @@ function App() {
       .then(response => response.json())
       .then(() => {
         setPlaylistTracks(prevTracks => prevTracks.filter(track => track.id !== trackToRemove.id));
+                
       })
       .catch(error => console.error('Error removing track from playlist:', error));
   };
-
+  
   return (
     <div className="App">
       <div className="search-bar-container">
