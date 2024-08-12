@@ -1,10 +1,16 @@
 // src/components/SearchBar.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import '../App.css';
 
 export const SearchBar = ({ setResults, accessToken }) => {
   const [input, setInput] = useState("");
+
+  useEffect(() => {
+    if (accessToken) {
+      console.log("Access Token Available:", accessToken); // Debugging line
+    }
+  }, [accessToken]);
 
   const fetchData = (value) => {
     if (!accessToken) {
@@ -37,7 +43,7 @@ export const SearchBar = ({ setResults, accessToken }) => {
 
   const handleChange = (value) => {
     setInput(value);
-    if (value) {
+    if (value && accessToken) {
       fetchData(value);
     } else {
       setResults([]);
@@ -50,6 +56,7 @@ export const SearchBar = ({ setResults, accessToken }) => {
         placeholder='Type to search..'
         value={input}
         onChange={(e) => handleChange(e.target.value)}
+        disabled={!accessToken} // Disable input if no access token is available
       />
       <FaSearch id="search-icon" />
     </div>
