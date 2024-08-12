@@ -1,15 +1,17 @@
 //src/components/SearchResultsList.jsx
-import React from 'react'
-import App from '../App';
+import React from 'react';
 import { SearchResult } from './SearchResult';
-export const SearchResultsList = ({ results }) => {
+import  '../App.css';
+
+export const SearchResultsList = ({ results, onAddToPlaylist }) => {
   return (
     <div className='results-list'>
         {
-            results.map((result, id) => {
-                return <SearchResult result={result} key={id} />
-            })
+            results.map((result, id) => (
+              
+                <SearchResult result={result} key={id} onAddToPlaylist={onAddToPlaylist} />
+            ))
         }
         </div>
-  )
-}
+  );
+};
