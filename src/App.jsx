@@ -1,8 +1,8 @@
-// src/App.jsx
 import React, { useState, useEffect } from 'react';
 import { redirectToAuthCodeFlow, getAccessToken } from './auth';
 import { SearchBar } from './components/SearchBar';
 import { SearchResultsList } from './components/SearchResultsList';
+import  Playlist  from './components/Playlist';
 import './App.css';
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
       },
       body: JSON.stringify({
         name: playlistName,
-        description: 'New playlist created by app',
+        description: 'Created my Muusic(k)',
         public: false,
       }),
     })
@@ -71,6 +71,30 @@ function App() {
       .catch(error => console.error('Error creating playlist:', error));
   };
 
+  const handleRemoveTrack = (trackToRemove) => {
+    if (!accessToken || !playlist) {
+      console.error("No access token or playlist available");
+      return;
+    }
+
+    // Remove the track from the playlist
+    fetch(`https://api.spotify.com/v1/playlists/${playlist.id}/tracks`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        tracks: [{ uri: trackToRemove.externalUrl }],
+      }),
+    })
+      .then(response => response.json())
+      .then(() => {
+        setPlaylistTracks(prevTracks => prevTracks.filter(track => track.id !== trackToRemove.id));
+      })
+      .catch(error => console.error('Error removing track from playlist:', error));
+  };
+
   return (
     <div className="App">
       <div className="search-bar-container">
@@ -78,29 +102,13 @@ function App() {
         <SearchResultsList results={results} onAddToPlaylist={handleAddToPlaylist} />
       </div>
       {playlist && (
-        <div className="playlist-display">
-          <h2>Playlist: {playlist.name}</h2>
-          <div className="playlist-tracks">
-            {playlistTracks.length > 0 ? (
-              playlistTracks.map((track, index) => (
-                <div key={index} className="playlist-track">
-                  <img src={track.imageUrl} alt={track.name} style={{ width: '50px', height: '50px' }} />
-                  <div>
-                    <h3>{track.name}</h3>
-                    <p>{track.artist} - {track.album}</p>
-                    <a href={track.externalUrl} target="_blank" rel="noopener noreferrer">Listen on Spotify</a>
-                    <button>helo helloo</button>
-         
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p>No tracks added yet.</p>
-            )}
-          </div>
-        </div>
+       <Playlist 
+          playlist={playlist}
+          playlistTracks={playlistTracks}
+          handleRemoveTrack={handleRemoveTrack}
+          />
       )}
-    </div>
+      </div>
   );
 }
 
