@@ -1,5 +1,6 @@
 // src/components/SearchResult.jsx
 import React from 'react';
+import '../App.css';
 
 export const SearchResult = ({ result }) => {
   return (
