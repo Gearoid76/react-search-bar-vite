@@ -5,7 +5,7 @@ import '../App.css';
 
 export const SearchResult = ({ result, onAddToPlaylist, onRemoveFromPlaylist }) => {
   const [isAdding, setIsAdding] = useState(false);
-  const [playlistName, setPlaylistName] = useState('Created by app');
+  const [playlistName, setPlaylistName] = useState('Created by Muusic(k)');
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const handleAddToPlaylist = () => {
