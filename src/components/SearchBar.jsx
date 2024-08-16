@@ -8,7 +8,7 @@ export const SearchBar = ({ setResults, accessToken }) => {
 
   useEffect(() => {
     if (accessToken) {
-      console.log("Access Token Available:", accessToken); // Debugging line
+      console.log("Access Token Available:", accessToken);
     }
   }, [accessToken]);
 
